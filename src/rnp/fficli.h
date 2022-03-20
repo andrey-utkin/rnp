@@ -54,6 +54,9 @@ class cli_rnp_t {
     FILE *    userio_in{};  /* file pointer for user's inputs */
     FILE *    userio_out{}; /* file pointer for user's outputs */
     int       pswdtries{};  /* number of password tries, -1 for unlimited */
+    bool      reuse_password_for_subkey{};
+    char *    reuse_primary_fprint{};
+    char *    reused_password{};
 
     bool init(const rnp_cfg &cfg);
     void end();
