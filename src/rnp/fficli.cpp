@@ -453,6 +453,12 @@ start:
             // currently will loop forever
             goto start;
         }
+        if (strlen(buf) == 0 && !rnp->cfg().get_bool(CFG_FORCE)) {
+            if (!cli_rnp_get_confirmation(
+                  rnp, "Password is empty. The key will be left unprotected. Are you sure?")) {
+                goto start;
+            }
+        }
     }
     if (protect && is_primary) {
         if (cli_rnp_get_confirmation(
